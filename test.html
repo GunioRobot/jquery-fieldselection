@@ -14,7 +14,7 @@
 
 			// install the event handler for #debug #output
 			$('input[@type="text"], textarea').keyup(update).mousedown(update).mousemove(update).mouseup(update);
-			
+
 			// assign the field1 paste event
 			$('.replace').click(function(e){
 				$('#field1').replaceSelection($(this).title());
@@ -22,13 +22,13 @@
 			});
 
 		});
-		
+
 		/*
 			this function handles #debug #output
 		 */
 
 		function update(e) {
-			
+
 			// here we fetch our text range object
 			var range = $(this).getSelection();
 
@@ -43,17 +43,17 @@
         ((typeof range['col'] != 'undefined') ? "caret col: " + range.col + "\n" : '') +
         "selected text:\n<span class=\"txt\">" + (($('#ws').get(0).checked) ? range.text.whitespace() : range.text) + "</span>\n\n"
 			);
-		
+
 		}
-		
+
 		/*
 			this code block is not needed for jQuery fieldSelection
 			this is just to visualize white space in #debug #output
 		 */
 
 		String.prototype.whitespace = (function() {
-			
-			if (!RegExp.escape) { 
+
+			if (!RegExp.escape) {
 			  RegExp.escape = (function() { // RegExp.escape by Simon Wilson & Mark Wubben
 			    var specials = [ '/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\' ];
 			    var sRE = new RegExp( '(\\' + specials.join('|\\') + ')', 'g' );
@@ -61,9 +61,9 @@
 			  })();
 
 			}
-			
+
 			var ws = { "\r\n": "¶", "\n": "¶", "\r": "¶", "\t": "&raquo;", " ": "&middot;" };
-			
+
 			return ($.browser.msie) ? function() {
 				// &#8203; to break up our whitespaces doesn't work in IE (it prints a block)
 				// but nevertheless he doesn't need it, because he has "word-wrap:break-word;"
@@ -76,7 +76,7 @@
 				$.each(ws, function(i){ s = s.replace(new RegExp(RegExp.escape(i), 'g'), this + "\u200b") });
 				return s;
 			}
-			
+
 		})();
 
 		function hexdump(txt, hi_f, hi_t) {
@@ -111,9 +111,9 @@
 			return hex;
 
 		}
-		
+
 		//--><!]]>
-	
+
 	</script>
 	<style type="text/css">
 		body {
@@ -121,24 +121,24 @@
 			color:#653;
 			font:1em Georgia, "Courier New", serif;
 		}
-		
+
 		h1 { color:#430 }
 
 		h1 .nuf {
 			background-color:HighlightText;
 			color:Highlight;
 		}
-		
+
 		h1 .fun {
 			background-color:Highlight;
 			color:HighlightText;
 		}
-		
+
 		a:link { color:#993 }
 		a:visited { color:#660 }
-		
+
 		#content { position:relative }
-	
+
 		#debug {
 			position:absolute;
 			top:5%;
@@ -150,7 +150,7 @@
 			background:#ee9;
 			border:1px solid #996;
 		}
-		
+
 		#output .txt {
 			background:#f99;
 			display:inline;
@@ -161,7 +161,7 @@
   		background:#cc9;
   		color:#630;
   	}
-		
+
 		pre {
 			white-space:pre-wrap;
 			white-space:-moz-pre-wrap;
@@ -169,21 +169,21 @@
 			white-space:-o-pre-wrap;
 			word-wrap:break-word;
 		}
-		
+
 		label {
 			color:#663;
 			font-size:80%;
 		}
-		
+
 		input[type='text'], textarea {
 			display:block;
 			width:300px;
 			margin-bottom:8px;
 		}
 
-		/* bastard. */		
+		/* bastard. */
 		* html input, * html textarea { display:block; }
-		
+
 	</style>
 </head>
 <body>
